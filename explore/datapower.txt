@@ -1,0 +1,346 @@
+$ docker exec -it datapower-1 ls
+Dockerfile   cgroup       etc          proc         start.sh     var
+LICENSE      compress     lib          root         sys
+LICENSE.txt  dev          lib64        sbin         tmp
+bin          drouter      opt          start        usr
+
+$ docker exec -it datapower-1 ls drouter
+audit            lang             ramdisk2         tenants
+chkpoints        local            rpc_pipefs       trebuchet
+config           log              secure           webgui
+image            policy           store
+internalconfig   policyframework  temporary
+
+$ docker exec -it datapower-1 ls bin
+[                  fstrim             mountpoint         ssh
+[[                 fsync              mpstat             ssh-keygen
+addgroup           ftpget             mt                 ssl_client
+adduser            ftpput             mv                 start-stop-daemon
+adjtimex           fuser              nameif             stat
+ar                 getopt             nanddump           strings
+arch               getty              nandwrite          stty
+arp                grep               nbd-client         su
+arping             groups             nc                 sulogin
+ash                gunzip             netstat            sum
+awk                gzip               nice               sv
+base64             halt               nl                 svc
+basename           hdparm             nmeter             svlogd
+blkdiscard         head               nohup              swapoff
+blkid              hexdump            nproc              swapon
+blockdev           hexedit            nsenter            switch_root
+bootchartd         hostid             nslookup           sync
+bunzip2            hostname           nuke               sysctl
+busybox            httpd              od                 syslogd
+bzcat              hush               openvt             tac
+bzip2              hwclock            partprobe          tail
+cal                i2cdetect          passwd             tam7_svrsslcfg
+cat                i2cdump            paste              tam801_svrsslcfg
+chat               i2cget             patch              tam901_svrsslcfg
+chattr             i2cset             pgrep              tam903_svrsslcfg
+chgrp              id                 pidof              tar
+chmod              ifconfig           ping               taskset
+chown              ifdown             ping6              tcpsvd
+chpasswd           ifenslave          pipe_progress      tee
+chpst              ifplugd            pivot_root         telnet
+chroot             ifup               pkill              telnetd
+chrt               inetd              pmap               test
+chvt               init               poweroff           tftp
+cksum              insmod             powertop           tftpd
+clear              install            printenv           time
+cmp                iostat             printf             top
+comm               ip                 ps                 touch
+conspy             ipaddr             pscan              tr
+cp                 ipcalc             pstree             traceroute
+cpio               ipcrm              pwd                traceroute6
+crond              ipcs               pwdx               true
+crontab            iplink             raidautorun        truncate
+cryptpw            ipneigh            rdate              tty
+cttyhack           iproute            rdev               ttysize
+cut                iprule             readlink           ubiattach
+date               iptunnel           readprofile        ubidetach
+dc                 kbd_mode           realpath           ubimkvol
+dd                 kill               reboot             ubirename
+deallocvt          killall            renice             ubirmvol
+delgroup           killall5           reset              ubirsvol
+deluser            klogd              resize             ubiupdatevol
+df                 last               resume             udhcpc
+dhcprelay          less               rev                udhcpd
+diff               link               rm                 udpsvd
+dirname            linux32            rmdir              uevent
+disable-feature    linux64            rmmod              umount
+dmesg              linuxrc            route              uname
+dnsd               ln                 rtcwake            uncompress
+dnsdomainname      loadfont           run-init           unexpand
+dos2unix           loadkmap           run-parts          uniq
+drouter            logger             runlevel           unix2dos
+du                 login              runsv              unlink
+dumpkmap           logname            runsvdir           unlzma
+dumpleases         logread            rx                 unobfu
+echo               losetup            scp                unshare
+ed                 lpd                script             unxz
+egrep              lpq                sed                unzip
+eject              lpr                sendmail           uptime
+env                ls                 seq                users
+envdir             lsattr             set-user           usleep
+envuidgid          lscgroup           setarch            uudecode
+ether-wake         lsmod              setconsole         uuencode
+expand             lsof               setfattr           vconfig
+expr               lsscsi             setfont            vi
+factor             lssubsys           setkeycodes        vlock
+fakeidentd         lzcat              setlogcons         w
+fallocate          lzma               setpriv            watch
+false              makedevs           setserial          watchdog
+fatattr            man                setsid             wc
+faux_blk           md5sum             setuidgid          wget
+fbset              mdev               sftp               which
+fbsplash           mesg               sh                 who
+fdflush            microcom           sha1sum            whoami
+fdformat           mkdir              sha256sum          whois
+fdisk              mkdosfs            sha3sum            xargs
+fgconsole          mke2fs             sha512sum          xor
+fgrep              mkfifo             showkey            xxd
+find               mknod              shred              xz
+find_cdroms        mkpasswd           shuf               xzcat
+flock              mkswap             slattach           yes
+fold               mktemp             sleep              zcat
+free               modinfo            smemcap            zcip
+freeramdisk        modprobe           softlimit          zip
+fsck               more               sort
+fsfreeze           mount              split
+
+$ docker exec -it datapower-1 ls
+Dockerfile   cgroup       etc          proc         start.sh     var
+LICENSE      compress     lib          root         sys
+LICENSE.txt  dev          lib64        sbin         tmp
+bin          drouter      opt          start        usr
+
+$ docker exec -it datapower-1 ls usr
+bin      lib      lib64    safenet  sbin     share
+
+$ docker exec -it datapower-1 ls drouter
+audit            lang             ramdisk2         tenants
+chkpoints        local            rpc_pipefs       trebuchet
+config           log              secure           webgui
+image            policy           store
+internalconfig   policyframework  temporary
+
+$ docker exec -it datapower-1 ls drouter/store
+AAAInfo.xml
+AAAInfo.xsd
+ErrorPage.htm
+Form-Generate-HTML.xsl
+LoginPage.htm
+LogoutPage.htm
+OAuth-Generate-HTML.xsl
+ODCInfo.xsd
+ProcessingMetadata.html
+RAS
+RBMInfo.xml
+SQL-Injection-Filter.xsl
+SQL-Injection-Patterns.xml
+Sample-Injection-Patterns.xml
+Virus-Scan-Attachments.xsl
+XSS-Patterns.xml
+aaa-make-saml.xsl
+aaa-xacml-binding-sample.xsl
+accessfile.xsl
+antivirus-clam.xsl
+antivirus-symantec.xsl
+antivirus-trendmicro.xsl
+antivirus-webwasher.xsl
+antivirus.xsl
+app-mgmt-protocol-v2.wsdl
+app-mgmt-protocol-v2.xsd
+app-mgmt-protocol-v3.wsdl
+app-mgmt-protocol-v3.xsd
+app-mgmt-protocol.wsdl
+app-mgmt-protocol.xsd
+b2b-routing.xsl
+buffer-attachments.xsl
+caUnicenter31Filter.xsl
+caUnicenter31GetConfig.xml
+caUnicenter31Report.xsl
+caUnicenterCheckRelationships.xml
+caUnicenterFilter.xsl
+caUnicenterGetRelationships.xml
+caUnicenterRelationships.xsl
+caUnicenterReport.xsl
+call-xkms.xsl
+clam.xsl
+conformance-filter.xsl
+conformance-fixup-bsp-r3221.xsl
+conformance-xform.xsl
+custom-policy-check.xsl
+decrypt.xsl
+dp
+encrypt-soap.xsl
+encrypt-wssec.xsl
+encrypt.xsl
+example_CreateJWTCustomClaims.js
+example_CreateJWTCustomClaims.xsl
+example_CustomJWTDecryptVerify.js
+example_CustomJWTGenerator.js
+example_CustomJWTValidation.js
+example_CustomJWTValidation.xsl
+filter-accept-all.xsl
+filter-accept-service-providers.xsl
+filter-reject-all.xsl
+gatewayscript
+get-user.xsl
+getWSDLSoapOperations.xsl
+healthcheck.js
+healthcheck.json
+healthcheck.xml
+healthcheck.xsl
+identity-all.xsl
+identity-json.xq
+identity-xml.xq
+identity.js
+identity.xsl
+iop-mgmt-aaa.xml
+js
+jsonx.xsd
+jsonx2json.xsl
+log-cbe.wsdl
+log-cbe.xsd
+log-soap.wsdl
+log-soap.xsd
+log.xsl
+mediation-log.xsl
+mediation-msgvar.xsl
+mediation-notify.xsl
+mediation-reject.xsl
+mediation-route-vars.xsl
+mediation-routing.xsl
+mediation-slmresult.xsl
+mediation-true.xsl
+mediation-util.xsl
+mediation-wsrr-available-endpoints.xsl
+meta
+mq-header.xsl
+msgcat
+mtom.xsl
+netegrity-custom-saml-assert.xsl
+netegrity-custom-saml-sign.xsl
+pkcs7-convert-input.ffd
+pkcs7-convert-output.ffd
+pkcs7-decrypt.xsl
+pkcs7-encrypt.xsl
+pkcs7-get-signers.xsl
+pkcs7-sign.xsl
+pkcs7-verify.xsl
+policies
+policy-enforce-utility.xsl
+policy-sign-hmac-wssec.xsl
+policy-sign-wssec.xsl
+prettyprint.xsl
+profiles
+pubcerts
+reject-all-json.xq
+replay-filter.xsl
+required-elements-filter.xsl
+schemas
+set-key.xsl
+set-keypair.xsl
+set-recipient.xsl
+set-rsa-encrypt-param.xsl
+set-saml-decrypt-verify-param.xsl
+set-soap-common-param.xsl
+set-soap-receiver-param.xsl
+set-soap-sender-param.xsl
+set-verify-param.xsl
+set-wssec-common-param.xsl
+set-wssec-encrypt-param.xsl
+set-wssec-sign-param.xsl
+sign-enveloped.xsl
+sign-enveloping.xsl
+sign-hmac-enveloped.xsl
+sign-hmac-soap-enveloped.xsl
+sign-hmac-soapsec.xsl
+sign-hmac-wssec.xsl
+sign-kerberos-hmac-wssec.xsl
+sign-soap-enveloped.xsl
+sign-soap-enveloping.xsl
+sign-soapsec-swa.xsl
+sign-soapsec.xsl
+sign-swa.xsl
+sign-wssec-common.xsl
+sign-wssec.xsl
+sla-credential-class-policy-enforcement.xsl
+sla-getcontext.xsl
+sla-policy-enforcement-check.xsl
+sla-setcontext.xsl
+sld-resource-class-policy-enforcement.xsl
+soap-encoding-1.1.xsd
+soap-mediation.xsl
+soap-refine.xsl
+soaperror.xsl
+soapfilter.xsl
+soapreq.xsl
+soaprsp.xsl
+strip-security-header.xsl
+strip-wssec-signature.xsl
+symantec.xsl
+tspm-aaa-mc-map-saml-groups.xsl
+tspm-aaa-mc-retrieve-groups.xsl
+tspm-aaa-xacml-binding-rtss.xsl
+tspm-receive-updates.xsl
+tspm71-receive-updates.xsl
+utilities.xsl
+verify-hmac.xsl
+verify-kerberos-hmac-wssec.xsl
+verify.xsl
+w2sCountSchemas.xsl
+w2sGetFilterNodes.xsl
+w2sMakeContainerSchema.xsl
+w2sMakeSubSchema.xsl
+w2sResolveSOAPEncHrefs.xsl
+w2sRpcUtil.xsl
+w2sUtil.xsl
+webwasher.xsl
+wsdl-extract-fault.xsl
+wsdlFilterStub.xsl
+wsdlIntercept.xsl
+wsdlServeLocal.xsl
+wsdlToSchema.xsl
+wsm-formatters
+wssec-utilities.xsl
+wssecurity-message-layout-filter.xsl
+xml-mgmt-2004-objects.xsd
+xml-mgmt-2004-types.xsd
+xml-mgmt-2004.wsdl
+xml-mgmt-2004.xsd
+xml-mgmt-b2b.xsd
+xml-mgmt-base.xsd
+xml-mgmt-ops.xsd
+xml-mgmt.wsdl
+xml-mgmt.xsd
+
+$ docker exec -it datapower-1 ls drouter
+audit            lang             ramdisk2         tenants
+chkpoints        local            rpc_pipefs       trebuchet
+config           log              secure           webgui
+image            policy           store
+internalconfig   policyframework  temporary
+$ docker exec -it datapower-1 ls drouter/local
+foo         server.crt  server.csr  server.key
+$ docker exec -it datapower-1 ls drouter/config
+auto-startup.cfg             reset-password.cfg
+auto-user.cfg                vbox-inotify-workaround.cfg
+debug.cfg                    web-mgmt.cfg
+foo
+
+$ docker exec -it datapower-1 cat drouter/config/web-mgmt.cfg
+top; co
+
+web-mgmt
+  admin disabled
+exit
+$ 
+
+$ docker exec -it datapower-1 cat etc/passwd
+root:x:0:0:root:/root:/bin/dpsshclient
+ivmgr:x:5001:1001:Access Manager User:/opt/PolicyDirector:/bin/false
+mqm:*:100:0:::
+drouter:x:101:101:drouter:/nonexistent:/bin/false
+

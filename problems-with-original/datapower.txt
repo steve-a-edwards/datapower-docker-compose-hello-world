@@ -1,0 +1,173 @@
+$ docker build --rm -t datapower/1 .
+Sending build context to Docker daemon  69.12kB
+Step 1/11 : FROM ibmcom/datapower:latest
+ ---> f8c8f0129d82
+Step 2/11 : ENV  DATAPOWER_ACCEPT_LICENSE=true      DATAPOWER_WORKER_THREADS=2      DATAPOWER_INTERACTIVE=true
+ ---> Running in 98ed4a9d7462
+Removing intermediate container 98ed4a9d7462
+ ---> 7f49525d1331
+Step 3/11 : COPY src/drouter/config /drouter/config
+ ---> 4c3a4b446493
+Step 4/11 : COPY src/drouter/local /drouter/local
+ ---> 6d33aa0080ef
+Step 5/11 : COPY src/start /start
+ ---> df8888896ece
+Step 6/11 : COPY src/start.sh /start.sh
+ ---> e813ff2be6e6
+Step 7/11 : USER root
+ ---> Running in c66f4a89089b
+Removing intermediate container c66f4a89089b
+ ---> 1e143cce0db4
+Step 8/11 : RUN  set-user drouter
+ ---> Running in 95c2779623f9
+Removing intermediate container 95c2779623f9
+ ---> b9ac43fa8605
+Step 9/11 : USER drouter
+ ---> Running in 06a2a0c19834
+Removing intermediate container 06a2a0c19834
+ ---> 3680cf003998
+Step 10/11 : EXPOSE 9443
+ ---> Running in 4a3bc1d896b8
+Removing intermediate container 4a3bc1d896b8
+ ---> 73141f3524a4
+Step 11/11 : CMD ["/start.sh"]
+ ---> Running in bbf103662234
+Removing intermediate container bbf103662234
+ ---> 3b02ca538bae
+Successfully built 3b02ca538bae
+Successfully tagged datapower/1:latest
+$ 
+$ 
+$ 
+$ docker run -i -t -p 8000:8000 -p 9080:9080--name datapower-1 datapower/1
+docker: Invalid containerPort: 9080--name.
+See 'docker run --help'.
+$ docker run -i -t -p 8000:8000 -p 9080:9080 --name datapower-1 datapower/1
++ env
++ cut '-d=' -f1
++ grep ^DATAPOWER_
++ export DATAPOWER_INTERACTIVE DATAPOWER_LOG_STDOUT DATAPOWER_FAST_STARTUP DATAPOWER_ACCEPT_LICENSE DATAPOWER_WORKER_THREADS DATAPOWER_LOG_COLOR
++ find /start -type f -name '*.sh' '!' -name '.*'
++ echo 'Processing /start/debug.sh'
+Processing /start/debug.sh
++ . /start/debug.sh
++ '[' '!' -z  ]
++ tee /drouter/config/debug.cfg
+# DEBUG log is not enabled
++ tee /drouter/config/foo/debug.cfg
+tee: /drouter/config/foo/debug.cfg: Permission denied
+# DEBUG log is not enabled
++ set -x
++ echo
+
++ echo 'Processing /start/web-mgmt.sh'
+Processing /start/web-mgmt.sh
++ . /start/web-mgmt.sh
++ '['  '=' true ]
++ cat
++ tee /drouter/config/web-mgmt.cfg
+top; co
+
+web-mgmt
+  admin disabled
+exit
++ set -x
++ echo
+
++ echo 'Processing /start/loadbalancer-group.sh'
+Processing /start/loadbalancer-group.sh
++ . /start/loadbalancer-group.sh
++ + teecat /drouter/config/foo/loadbalancer-group.cfg
+
+tee: /drouter/config/foo/loadbalancer-group.cfg: Permission denied
+top; co
+
+loadbalancer-group lbg-backend
+  reset
++ read ADDR
++ + cutenv
+ '-d=' -f2-
++ grep '^[a-zA-Z0-9_-]*_PORT_8080_TCP_ADDR'
++ nslookup backend
++ sed -n -e '/^$/,$p'
++ awk '/^Address /{print $4}'
++ echo '  server unallocated.barefruit.co.uk 1 8080 enabled'
++   server unallocated.barefruit.co.uk 1 8080 enabled
+read ADDR
++ cat
+exit
+
+xml-manager default
+  loadbalancer-group lbg-backend
+exit
++ set -x
++ echo
+
++ echo 'Processing /start/vbox-inotify-workaround.sh'
+Processing /start/vbox-inotify-workaround.sh
++ . /start/vbox-inotify-workaround.sh
++ rm -f /drouter/config/vbox-inotify-workaround.cfg
++ '['  '=' true ]
++ tee /drouter/config/vbox-inotify-workaround.cfg
+# No need to work around https://www.virtualbox.org/ticket/10660
++ set -x
++ echo
+
++ echo 'Processing /start/reset-password.sh'
+Processing /start/reset-password.sh
++ . /start/reset-password.sh
++ rm -f /drouter/config/reset-password-imp.cfg
++ '['  '=' true ]
++ set -x
++ echo
+
++ exec /bin/drouter
+20190508T113003.177Z [0x8040006b][system][notice] logging target(default-log): Logging started.
+20190508T113003.300Z [0x804000fe][system][notice] : Container instance UUID: 73934562-8809-4bc7-8f9e-375e248feae0, Cores: 2, vCPUs: 2, CPU model: Intel(R) Core(TM) i7-3667U CPU @ 2.00GHz, Memory: 4949.3MB, Platform: docker, OS: dpos, Edition: developers-limited, Up time: 0 minutes
+20190508T113003.343Z [0x8040001c][system][notice] : DataPower IDG is on-line.
+20190508T113003.344Z [0x8100006f][system][notice] : Executing default startup configuration.
+20190508T113003.660Z [0x8100006d][system][notice] : Executing system configuration.
+20190508T113003.662Z [0x8100006b][mgmt][notice] domain(default): tid(8591): Domain operational state is up.
+a373658fa249
+Unauthorized access prohibited.
+20190508T113004.216Z [0x806000dd][system][notice] cert-monitor(Certificate Monitor): tid(399): Enabling Certificate Monitor to scan once every 1 days for soon to expire certificates
+20190508T113004.306Z [0x8100006e][system][notice] : Executing startup configuration.
+20190508T113004.321Z [0x00340018][mgmt][warn] web-mgmt(WebGUI-Settings): Local configuration modified by script
+20190508T113004.326Z [0x8040009f][system][notice] throttle(Throttler): tid(1551): Disabling throttle.
+20190508T113004.333Z [0x00350015][mgmt][notice] b2b-persistence(B2BPersistence): tid(111): Operational state down
+20190508T113004.363Z [0x0034000d][mgmt][warn] ssh(SSH Service): tid(111): Object is disabled
+20190508T113004.403Z [0x00350015][mgmt][notice] smtp-server-connection(default): tid(7247): Operational state down
+20190508T113004.403Z [0x00350014][mgmt][notice] smtp-server-connection(default): tid(7247): Operational state up
+20190508T113004.427Z [0x810000cc][mgmt][warn] domain(foo): tid(27263): Domain 'default' is not visible - functionality may be restricted.
+20190508T113004.427Z [0x8100006b][mgmt][notice] domain(foo): tid(27263): Domain operational state is up.
+20190508T113004.428Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'logtemp:'
+20190508T113004.428Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'logstore:'
+20190508T113004.428Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'temporary:'
+20190508T113004.428Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'export:'
+20190508T113004.428Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'cert:'
+20190508T113004.428Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'chkpoints:'
+20190508T113004.428Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'policyframework:'
+20190508T113004.428Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'dpnfsstatic:'
+20190508T113004.428Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'dpnfsauto:'
+20190508T113004.429Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'ftp-response:'
+20190508T113004.429Z [0x8100001f][mgmt][notice] domain(foo): tid(27263): Created domain folder 'xm70store:'
+20190508T113004.431Z [0x8100003b][mgmt][notice] domain(default): Domain configured successfully.
+20190508T113004.614Z [foo][0x8040006b][system][notice] logging target(default-log): tid(111): Logging started.
+login: 20190508T113004.867Z [foo][0x810002be][cli][error] : tid(27263): Unable to execute config:///debug.cfg - must be text file.
+20190508T113004.867Z [foo][][cli][error] : tid(27263): (startup-config:30): exec config:///debug.cfg
+20190508T113004.868Z [foo][0x810002be][cli][error] : tid(27263): Unable to execute config:///loadbalancer-group.cfg - must be text file.
+20190508T113004.868Z [foo][][cli][error] : tid(27263): (startup-config:40): exec config:///loadbalancer-group.cfg
+20190508T113004.871Z [foo][0x8060008b][crypto][error] certificate(crypto-certificate): tid(111): certificate 'local:///server.crt' is expired
+20190508T113004.871Z [foo][0x00f30008][mgmt][error] certificate(crypto-certificate): tid(111): File is expired
+20190508T113004.871Z [0x8240001b][audit][error] : tid(111): (admin:foo:system:*): certificate 'crypto-certificate' - File is expired
+20190508T113004.871Z [foo][0x00f30008][cli][error] certificate(crypto-certificate): File is expired
+20190508T113004.879Z [foo][0x8120001f][ssl][error] ssl-server(ssl-server-profile): tid(111): Identification Credentials 'crypto-identification-credentials' is not yet up
+20190508T113004.880Z [foo][0x8120002a][ssl][error] ssl-sni-mapping(ssl-hostname-mapping): tid(111): SSL server profile 'ssl-server-profile' is not yet up
+20190508T113004.883Z [foo][0x8120002a][ssl][error] ssl-sni-server(ssl-sni-server-profile): tid(111): SSL server profile 'ssl-server-profile' is not yet up
+20190508T113004.970Z [0x00350014][mgmt][notice] quota-enforcement-server(QuotaEnforcementServer): tid(735): Operational state up
+20190508T113004.972Z [foo][0x00350015][mgmt][notice] xmlmgr(default): tid(111): Operational state down
+20190508T113004.990Z [foo][0x00330019][mgmt][error] source-https(https-fsph-foo): tid(111): Operation state transition to up failed
+20190508T113004.992Z [foo][0x00350015][mgmt][notice] smtp-server-connection(default): tid(32847): Operational state down
+20190508T113004.992Z [foo][0x00350014][mgmt][notice] smtp-server-connection(default): tid(32847): Operational state up
+20190508T113005.013Z [0x8100003b][mgmt][notice] domain(foo): Domain configured successfully.
+

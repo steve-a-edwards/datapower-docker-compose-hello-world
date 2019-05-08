@@ -1,0 +1,25 @@
+
+
+cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src
+
+
+Building individual images, containers:
+
+cd datapower
+
+# BUILD IMAGE USING Dockefile:
+docker build --rm -t datapower/1 .
+
+docker run -i -t -p 9440:9440 -p 9090:9090 -p 9022:9022 --hostname datapower-01 --name datapower-1 datapower/1
+# problems with the original: start.sh, start CFG files, httpsFSH and sni, crypto objects, keys & certs in local:
+
+# Copy newly worked default, foo config/local to host filing system:
+# NEED TO CHECK FILE PERMISSIONS AFTER cp:
+docker cp datapower-1:/drouter/config temp/config
+docker cp datapower-1:/drouter/local temp/local
+
+docker stop datapower-1
+docker rm datapower-1
+docker rmi datapower/1
+
+docker exec -it --user root datapower-1 ping localhost
