@@ -11,5 +11,7 @@ session.input.readAsBuffer (function (error, buffer) {
     // Since this simple application only returns a test hello world
     // string, we'll just prepend our placeholder string
     session.output.write("DataPower Proxied: " + buffer.toString());
+    // Steve Edwards added the following to see in the logs:
+    console.error("DataPower received response from backend: " + buffer.toString());
 });
 

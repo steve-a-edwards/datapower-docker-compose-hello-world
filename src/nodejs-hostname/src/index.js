@@ -3,8 +3,9 @@ var app = express();
 var os = require('os');
 
 app.get('/', function (req, res) {
+  var host = server.address().address;
   res.send('Hello world from ' + os.hostname() + "\n");
-  console.log('Answered request with ' + os.hostname() );
+  console.log('Answered request on backend with hostname/ip ' + os.hostname() + '/' + host);
 });
 
 var server = app.listen(8080, function () {

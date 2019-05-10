@@ -1,0 +1,8 @@
+version: '2'
+services:
+   datapower:
+     build: datapower
+     container_name: datapower_container
+     ports:
+      - 9090:9090
+      - 9440:9440

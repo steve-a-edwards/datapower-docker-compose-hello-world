@@ -1,11 +1,13 @@
 
 
-cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src
-
-
 Building individual images, containers:
 
-cd datapower
+===
+datapower
+
+cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src/datapower
+
+
 
 # BUILD IMAGE USING Dockefile:
 docker build --rm -t datapower/1 .
@@ -23,3 +25,54 @@ docker rm datapower-1
 docker rmi datapower/1
 
 docker exec -it --user root datapower-1 ping localhost
+
+cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src
+
+docker-compose -f docker-compose-datapower-only.yml -p dponly build
+docker-compose -f docker-compose-datapower-only.yml -p dponly up
+docker-compose -f docker-compose-datapower-only.yml -p dponly rm
+
+=========================
+curldriver
+
+cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src/curldriver
+
+# BUILD IMAGE USING Dockefile:
+docker build --rm -t curldriver/1 .
+
+docker run -i -t --hostname curldriver-01 --name curldriver-1 curldriver/1
+docker rm curldriver-1
+
+cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src
+
+docker-compose -f docker-compose-curldriver-only.yml -p cdonly build
+docker-compose -f docker-compose-curldriver-only.yml -p cdonly up
+docker-compose -f docker-compose-curldriver-only.yml -p cdonly rm
+
+============
+nodejs-hostname ONLY
+
+cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src/nodejs-hostname
+
+# BUILD IMAGE USING Dockefile:
+docker build --rm -t nodejs/1 .
+
+docker run -i -t --hostname nodejs-01 -p 8080:8080 --name nodejs-1 nodejs/1
+docker rm nodejs-1
+docker rmi nodejs/1
+
+docker run -i -t --hostname nodejs-01 -p 3080:3080 --name nodejs-1 nodejs/1
+
+docker run -ti --name ubuntu_explore ubuntu:trusty /bin/sh
+
+docker-compose -f  docker-compose-nodejs-only.yml -p df build
+docker-compose -f  docker-compose-nodejs-only.yml -p df up
+
+
+============
+ALL
+
+docker-compose -f  docker-compose-v2.yml -p all build
+
+
+

@@ -1,0 +1,6 @@
+version: '2'
+services:
+   curldriver:
+     build: curldriver
+     container_name: curldriver_container
+
