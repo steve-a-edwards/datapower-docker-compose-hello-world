@@ -1,0 +1,79 @@
+> docker-compose -f  docker-compose-all.yml -p all up
+
+Creating all_backend_1 ... done
+Creating all_datapower_1 ... done
+Creating all_curldriver_1 ... done
+Attaching to all_backend_1, all_datapower_1, all_curldriver_1
+backend_1     | Example app listening at http://0.0.0.0:8080
+datapower_1   | time="2019-05-24T14:10:17Z" level=info msg="Starting snmp exporter (version=0.11.0, branch=HEAD, revision=e4591716c29459cb2a12b1bed129af519ad91d23)" source="main.go:138"
+datapower_1   | time="2019-05-24T14:10:17Z" level=info msg="Build context (go=go1.10.2, user=root@80735d30559d, date=20180530-10:24:52)" source="main.go:139"
+datapower_1   | time="2019-05-24T14:10:17Z" level=info msg="Listening on :63512" source="main.go:218"
+curldriver_1  | Attempting connect to datapower:9440:
+curldriver_1  | curl: (7) Failed to connect to datapower port 9440: Connection refused
+curldriver_1  | curl error 7
+datapower_1   | 20190524T141018.440Z [0x8040006b][system][notice] logging target(default-log): Logging started.
+datapower_1   | 20190524T141018.500Z [0x804000fe][system][notice] : Container instance UUID: 9ed58c11-5797-4eaa-accf-50e5b91ac89f, Cores: 4, vCPUs: 4, CPU model: Intel(R) Core(TM) i7-4650U CPU @ 1.70GHz, Memory: 3928.9MB, Platform: docker, OS: dpos, Edition: developers-limited, Up time: 0 minutes
+datapower_1   | 20190524T141018.506Z [0x8040001c][system][notice] : DataPower IDG is on-line.
+datapower_1   | 20190524T141018.507Z [0x8100006f][system][notice] : Executing default startup configuration.
+datapower_1   | 20190524T141018.877Z [0x8100006d][system][notice] : Executing system configuration.
+datapower_1   | 20190524T141018.878Z [0x8100006b][mgmt][notice] domain(default): tid(8591): Domain operational state is up.
+datapower_1   | 20190524T141019.465Z [0x806000dd][system][notice] cert-monitor(Certificate Monitor): tid(399): Enabling Certificate Monitor to scan once every 1 days for soon to expire certificates
+datapower_1   | 20190524T141019.566Z [0x8100006e][system][notice] : Executing startup configuration.
+datapower_1   | 20190524T141019.573Z [0x8040009f][system][notice] throttle(Throttler): tid(1551): Disabling throttle.
+datapower_1   | 20190524T141019.583Z [0x00350015][mgmt][notice] b2b-persistence(B2BPersistence): tid(111): Operational state down
+datapower_1   | 20190524T141019.897Z [0x00350014][mgmt][notice] ssh(SSH Service): tid(111): Operational state up
+datapower_1   | 20190524T141019.945Z [0x00350015][mgmt][notice] smtp-server-connection(default): tid(7247): Operational state down
+datapower_1   | 20190524T141019.945Z [0x00350014][mgmt][notice] smtp-server-connection(default): tid(7247): Operational state up
+datapower_1   | 20190524T141019.985Z [0x00350014][mgmt][notice] web-mgmt(WebGUI-Settings): tid(303): Operational state up
+datapower_1   | 20190524T141020.067Z [0x8100006b][mgmt][notice] domain(foo): tid(27375): Domain operational state is up.
+datapower_1   | 20190524T141020.068Z [0x80e00816][quota-enforcement][notice] quota-enforcement-server(QuotaEnforcementServer): tid(735): The operational state of the quota enforcement server transitioned to up.
+datapower_1   | 20190524T141020.068Z [0x00350014][mgmt][notice] quota-enforcement-server(QuotaEnforcementServer): tid(735): Operational state up
+datapower_1   | 20190524T141020.068Z [foo][0x8100015e][file][notice] : tid(27375): Created directory "logtemp:"
+datapower_1   | 20190524T141020.068Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'logtemp:'
+datapower_1   | 20190524T141020.068Z [foo][0x8100015e][file][notice] : tid(27375): Created directory "logstore:"
+datapower_1   | 20190524T141020.068Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'logstore:'
+datapower_1   | 20190524T141020.069Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'temporary:'
+datapower_1   | 20190524T141020.069Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'export:'
+datapower_1   | 20190524T141020.069Z [foo][0x8100015e][file][notice] : tid(27375): Created directory "cert:"
+datapower_1   | 20190524T141020.069Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'cert:'
+datapower_1   | 20190524T141020.069Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'chkpoints:'
+datapower_1   | 20190524T141020.069Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'policyframework:'
+datapower_1   | 20190524T141020.069Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'dpnfsstatic:'
+datapower_1   | 20190524T141020.069Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'dpnfsauto:'
+datapower_1   | 20190524T141020.069Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'ftp-response:'
+datapower_1   | 20190524T141020.069Z [0x8100001f][mgmt][notice] domain(foo): tid(27375): Created domain folder 'xm70store:'
+datapower_1   | 20190524T141020.072Z [0x8100003b][mgmt][notice] domain(default): Domain configured successfully.
+datapower_1   | 20190524T141020.280Z [foo][0x8040006b][system][notice] logging target(default-log): tid(111): Logging started.
+datapower_1   | 20190524T141020.573Z [foo][0x00330019][mgmt][error] source-http(http-fsph-foo): tid(111): Operation state transition to up failed
+datapower_1   | 20190524T141020.579Z [foo][0x00350015][mgmt][notice] smtp-server-connection(default): tid(32959): Operational state down
+datapower_1   | 20190524T141020.579Z [foo][0x00350014][mgmt][notice] smtp-server-connection(default): tid(32959): Operational state up
+datapower_1   | 20190524T141020.591Z [foo][0x00350016][mgmt][notice] source-http(http-fsph-foo): tid(111): Service installed on port
+datapower_1   | 20190524T141020.591Z [foo][0x00350014][mgmt][notice] source-http(http-fsph-foo): tid(111): Operational state up
+datapower_1   | 20190524T141020.591Z [foo][0x00350014][mgmt][notice] mpgw(MPGW-foo): tid(111): Operational state up
+datapower_1   | 20190524T141020.601Z [0x8100003b][mgmt][notice] domain(foo): Domain configured successfully.
+
+curldriver_1  | Attempting connect to datapower:9440:
+backend_1     | Answered request on backend with hostname/ip a9caf8aa56ce/0.0.0.0
+curldriver_1  | DataPower Proxied: Hello world from a9caf8aa56ce
+datapower_1   | 20190524T141023.784Z [0x80e00784][network][warn] dns(Main-Name-Service): tid(1215): Resolution of host name 'backend' took 503 ms to resolve.
+datapower_1   | 20190524T141024.261Z [foo][0x8580005c][gatewayscript-user][notice] mpgw(MPGW-foo): tid(81)[response][172.19.0.4] gtid(c3e640295ce7fb4f00000051): DataPower received response from backend: Hello world from a9caf8aa56ce
+
+curldriver_1  | Attempting connect to datapower:9440:
+backend_1     | Answered request on backend with hostname/ip a9caf8aa56ce/0.0.0.0
+curldriver_1  | DataPower Proxied: Hello world from a9caf8aa56ce
+datapower_1   | 20190524T141029.311Z [foo][0x8580005c][gatewayscript-user][notice] mpgw(MPGW-foo): tid(320)[response][172.19.0.4] gtid(c3e640295ce7fb5500000140): DataPower received response from backend: Hello world from a9caf8aa56ce
+
+curldriver_1  | Attempting connect to datapower:9440:
+backend_1     | Answered request on backend with hostname/ip a9caf8aa56ce/0.0.0.0
+curldriver_1  | DataPower Proxied: Hello world from a9caf8aa56ce
+datapower_1   | 20190524T141034.342Z [foo][0x8580005c][gatewayscript-user][notice] mpgw(MPGW-foo): tid(97)[response][172.19.0.4] gtid(c3e640295ce7fb5a00000061): DataPower received response from backend: Hello world from a9caf8aa56ce
+
+curldriver_1  | Attempting connect to datapower:9440:
+backend_1     | Answered request on backend with hostname/ip a9caf8aa56ce/0.0.0.0
+curldriver_1  | DataPower Proxied: Hello world from a9caf8aa56ce
+datapower_1   | 20190524T141039.389Z [foo][0x8580005c][gatewayscript-user][notice] mpgw(MPGW-foo): tid(113)[response][172.19.0.4] gtid(c3e640295ce7fb5f00000071): DataPower received response from backend: Hello world from a9caf8aa56ce
+
+curldriver_1  | Attempting connect to datapower:9440:
+backend_1     | Answered request on backend with hostname/ip a9caf8aa56ce/0.0.0.0
+curldriver_1  | DataPower Proxied: Hello world from a9caf8aa56ce
+datapower_1   | 20190524T141044.443Z [foo][0x8580005c][gatewayscript-user][notice] mpgw(MPGW-foo): tid(352)[response][172.19.0.4] gtid(c3e640295ce7fb6400000160): DataPower received response from backend: Hello world from a9caf8aa56ce

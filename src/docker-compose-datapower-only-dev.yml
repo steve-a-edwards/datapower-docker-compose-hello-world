@@ -1,0 +1,11 @@
+version: '2'
+services:
+   datapower:
+     build: datapower
+     container_name: datapower_container
+     volumes:
+      - ./datapower/src/drouter/config:/drouter/config
+      - ./datapower/src/drouter/local:/drouter/local
+     ports:
+      - 9090:9090
+

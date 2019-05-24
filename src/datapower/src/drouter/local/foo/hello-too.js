@@ -12,6 +12,11 @@ session.input.readAsBuffer (function (error, buffer) {
     // string, we'll just prepend our placeholder string
     session.output.write("DataPower Proxied: " + buffer.toString());
     // Steve Edwards added the following to see in the logs:
-    console.error("DataPower received response from backend: " + buffer.toString());
+    // Log level in default domain set to notice: 
+    console.notice("DataPower received response from backend: " + buffer.toString());
+    
+    // Log target wsrr-log set up
+    // var logWSRR = console.options({'category':'wsrr'});
+    // logWSRR.notice('DataPower logged - A.');
 });
 

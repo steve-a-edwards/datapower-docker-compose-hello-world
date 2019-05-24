@@ -1,13 +1,28 @@
 
 
 Building individual images, containers:
+=========================
+curldriver
+
+cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src/curldriver
+
+# BUILD IMAGE USING Dockefile:
+docker build --rm -t curldriver/1 .
+
+docker run -i -t --hostname curldriver-01 --name curldriver-1 curldriver/1
+docker rm curldriver-1
+
+cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src
+
+docker-compose -f docker-compose-curldriver-only.yml -p cdonly build
+docker-compose -f docker-compose-curldriver-only.yml -p cdonly up
+docker-compose -f docker-compose-curldriver-only.yml -p cdonly rm
+
 
 ===
 datapower
 
 cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src/datapower
-
-
 
 # BUILD IMAGE USING Dockefile:
 docker build --rm -t datapower/1 .
@@ -27,27 +42,15 @@ docker rmi datapower/1
 docker exec -it --user root datapower-1 ping localhost
 
 cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src
+cd C:\Software\Eclipse-2018-09\workspace-datapower-git\datapower-docker-compose-hello-world\src\
 
 docker-compose -f docker-compose-datapower-only.yml -p dponly build
 docker-compose -f docker-compose-datapower-only.yml -p dponly up
 docker-compose -f docker-compose-datapower-only.yml -p dponly rm
-
-=========================
-curldriver
-
-cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src/curldriver
-
-# BUILD IMAGE USING Dockefile:
-docker build --rm -t curldriver/1 .
-
-docker run -i -t --hostname curldriver-01 --name curldriver-1 curldriver/1
-docker rm curldriver-1
-
-cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src
-
-docker-compose -f docker-compose-curldriver-only.yml -p cdonly build
-docker-compose -f docker-compose-curldriver-only.yml -p cdonly up
-docker-compose -f docker-compose-curldriver-only.yml -p cdonly rm
+DEV VERSION
+docker-compose -f docker-compose-datapower-only-dev.yml -p dpdevonly build
+docker-compose -f docker-compose-datapower-only-dev.yml -p dpdevonly up
+docker-compose -f docker-compose-datapower-only-dev.yml -p dpdevonly rm
 
 ============
 nodejs-hostname ONLY
@@ -65,14 +68,17 @@ docker run -i -t --hostname nodejs-01 -p 3080:3080 --name nodejs-1 nodejs/1
 
 docker run -ti --name ubuntu_explore ubuntu:trusty /bin/sh
 
-docker-compose -f  docker-compose-nodejs-only.yml -p df build
-docker-compose -f  docker-compose-nodejs-only.yml -p df up
-
+docker-compose -f  docker-compose-nodejs-only.yml -p nodeonly build
+docker-compose -f  docker-compose-nodejs-only.yml -p nodeonly up
 
 ============
 ALL
 
-docker-compose -f  docker-compose-v2.yml -p all build
+cd /Users/steve/Applications/eclipse/workspace-datapower-git/datapower-docker-compose-hello-world/src/
+cd C:\Software\Eclipse-2018-09\workspace-datapower-git\datapower-docker-compose-hello-world\src\
 
-
-
+docker-compose -f  docker-compose-all.yml -p all build
+docker-compose -f  docker-compose-all.yml -p all up
+docker-compose -f  docker-compose-all.yml -p all stop
+docker-compose -f  docker-compose-all.yml -p all start
+docker-compose -f  docker-compose-all.yml -p all rm
